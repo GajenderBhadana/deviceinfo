@@ -1,9 +1,14 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngFor="let objPost of objPosts.msg">
     <div class="header">
       <div class="head">
-        <h3>TEG9300-M</h3>
-        <p>Last Connected: 03-11-2022 10:43:15 offline</p>
+        <h3>{{ objPost.device_model }}</h3>
+        <p *ngIf="objPost.minute_diff <= 2; else elseBlock">
+          Last Connected: {{ objPost.created_dt }} online
+        </p>
+        <ng-template #elseBlock>
+          <p>Last Connected: {{ objPost.created_dt }} offline</p>
+        </ng-template>
       </div>
     </div>
     <div class="body-main">
@@ -15,7 +20,7 @@
             </div>
             <div>
               <h6>Device id</h6>
-              <p>TEG9300MTOC07709</p>
+              <p>{{ objPost.device_id }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -33,7 +38,9 @@
             </div>
             <div>
               <h6>Modal and OS Version</h6>
-              <p>TEG9300-M 9</p>
+              <p>
+                {{ objPost.device_model + " " + objPost.device_os_version }}
+              </p>
             </div>
           </div>
           <div class="body-media">
@@ -42,7 +49,7 @@
             </div>
             <div>
               <h6>RAM</h6>
-              <p>1.83 GB</p>
+              <p>{{ objPost.device_ram }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -51,7 +58,7 @@
             </div>
             <div>
               <h6>Serial Number</h6>
-              <p>TEG9300MTOC07709</p>
+              <p>{{ objPost.device_sno }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -60,7 +67,7 @@
             </div>
             <div>
               <h6>Sim No</h6>
-              <p>No detected sim</p>
+              <p>{{ objPost.device_sim_no }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -89,7 +96,7 @@
             </div>
             <div>
               <h6>Manufacturer</h6>
-              <p>OASYS</p>
+              <p>{{ objPost.device_manufacturer }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -98,7 +105,7 @@
             </div>
             <div>
               <h6>Battery</h6>
-              <p>36%</p>
+              <p>{{ objPost.device_battery_level }}%</p>
             </div>
           </div>
           <div class="body-media">
@@ -107,7 +114,7 @@
             </div>
             <div>
               <h6>IMEI Number</h6>
-              <p>No detected sim</p>
+              <p>{{ objPost.device_IMEI }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -116,7 +123,7 @@
             </div>
             <div>
               <h6>Temperature</h6>
-              <p>undefined</p>
+              <p>{{ objPost.device_temprature }}</p>
             </div>
           </div>
           <div class="body-media">
@@ -125,7 +132,7 @@
             </div>
             <div>
               <h6>Storage Used</h6>
-              <p>2 GB</p>
+              <p>{{ objPost.device_storage_used }}</p>
             </div>
           </div>
           <div class="body-media">
